@@ -1,0 +1,7 @@
+<mat-card class="centered" (keyup.enter)="create()">
+  <mat-form-field appearance="outline">
+    <mat-label>Starting Balance</mat-label>
+    <input matInput [(ngModel)]="money" /> </mat-form-field
+  ><br />
+  <button mat-raised-button color="accent" (click)="create()">Create</button>
+</mat-card>

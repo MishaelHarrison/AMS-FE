@@ -1,0 +1,38 @@
+<mat-card class="centered" (keyup.enter)="send()">
+  <button
+    mat-raised-button
+    color="accent"
+    [disabled]="mode == 'deposit'"
+    (click)="mode = 'deposit'"
+  >
+    Deposit</button
+  >&nbsp;
+  <button
+    mat-raised-button
+    color="accent"
+    [disabled]="mode == 'withdrawal'"
+    (click)="mode = 'withdrawal'"
+  >
+    Withdrawl</button
+  >&nbsp;
+  <button
+    mat-raised-button
+    color="accent"
+    [disabled]="mode == 'transfer'"
+    (click)="mode = 'transfer'"
+  >
+    Transfer
+  </button>
+  <div *ngIf="mode">
+    <br /><br />
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input matInput [(ngModel)]="amount" /> </mat-form-field
+    ><br />
+    <mat-form-field *ngIf="mode == 'transfer'" appearance="outline">
+      <mat-label>Target</mat-label>
+      <input matInput [(ngModel)]="target" /> </mat-form-field
+    ><br />
+    <button mat-raised-button color="accent" (click)="send()">Send</button>
+  </div>
+</mat-card>

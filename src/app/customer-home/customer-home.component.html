@@ -1,0 +1,32 @@
+<div *ngIf="info">
+  <mat-card>
+    Citizen Id: {{ info.citizenId }}<br />
+    Address: {{ info.address }}<br />
+    User Id: {{ info.userId }}<br />
+    Email: {{ info.email }}<br />
+    Name: {{ info.name }}<br />
+    PAN: {{ info.pan }}<br />
+    BOB: {{ info.dob | date }}<br />
+    <button mat-raised-button color="accent" (click)="newAccount()">
+      New Account
+    </button>
+  </mat-card>
+  <mat-card *ngFor="let account of info.accounts">
+    Id: {{ account.id }}<br />
+    Balance: {{ account.balance }}<br />
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="makeTransaction(account.id)"
+    >
+      Make a transaction
+    </button>
+    <div *ngIf="account.transactions.length > 0">Last 5 transactions:</div>
+    <div
+      *ngFor="let transaction of account.transactions"
+      [ngStyle]="{ color: transaction.amount > 0 ? 'green' : 'red' }"
+    >
+      {{ abs(transaction.amount) | currency: "USD" }}
+    </div>
+  </mat-card>
+</div>

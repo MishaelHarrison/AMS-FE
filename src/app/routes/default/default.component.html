@@ -1,0 +1,2 @@
+<app-customer-home *ngIf="(role | async) == 'CUSTOMER'"></app-customer-home>
+<app-manager-home *ngIf="(role | async) == 'MANAGER'"></app-manager-home>

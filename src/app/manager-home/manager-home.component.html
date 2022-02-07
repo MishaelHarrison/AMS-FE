@@ -1,0 +1,75 @@
+<mat-card
+  class="centered"
+  *ngIf="mode == 'requestPAN'"
+  (keyup.enter)="findUser()"
+>
+  <mat-form-field appearance="outline">
+    <mat-label>enter PAN</mat-label>
+    <input matInput [(ngModel)]="customer.pan" /> </mat-form-field
+  ><br />
+  <button mat-raised-button color="accent" (click)="findUser()">Submit</button>
+</mat-card>
+
+<mat-card class="centered" *ngIf="mode == 'foundCustomer' && foundCustomer">
+  CitizenId: {{ foundCustomer.citizenId }}<br />
+  address: {{ foundCustomer.address }}<br />
+  userId: {{ foundCustomer.userId }}<br />
+  email: {{ foundCustomer.email }}<br />
+  name: {{ foundCustomer.name }}<br />
+  PAN: {{ foundCustomer.pan }}<br />
+  DOB: {{ foundCustomer.dob | date }}<br />
+  <button mat-raised-button color="accent" (click)="mode = 'requestPAN'">
+    Back
+  </button>
+</mat-card>
+
+<mat-card
+  class="centered"
+  *ngIf="mode == 'createUser'"
+  (keyup.enter)="submit()"
+>
+  <mat-form-field appearance="outline">
+    <mat-label>PAN</mat-label>
+    <input matInput [(ngModel)]="customer.pan" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>balance</mat-label>
+    <input matInput [(ngModel)]="customer.balance" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>Citizen Id</mat-label>
+    <input matInput [(ngModel)]="customer.citizenId" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>address</mat-label>
+    <input matInput [(ngModel)]="customer.address" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>email</mat-label>
+    <input matInput [(ngModel)]="customer.email" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>name</mat-label>
+    <input matInput [(ngModel)]="customer.name" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>password</mat-label>
+    <input matInput [(ngModel)]="customer.password" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>DOB (YYYY-MM-DD)</mat-label>
+    <input matInput [(ngModel)]="date" /> </mat-form-field
+  ><br />
+  <button mat-raised-button color="accent" (click)="submit()">Submit</button>
+</mat-card>
+
+<mat-card
+  class="centered"
+  *ngIf="mode == 'created' && customerId && customer.password"
+>
+  Id: {{ customerId }}<br />
+  Password: {{ customer.password }}<br />
+  <button mat-raised-button color="accent" (click)="mode = 'requestPAN'">
+    Back
+  </button>
+</mat-card>

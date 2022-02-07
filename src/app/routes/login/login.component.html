@@ -1,0 +1,11 @@
+<mat-card class="centered" (keyup.enter)="login()">
+  <mat-form-field appearance="outline">
+    <mat-label>User Id</mat-label>
+    <input matInput [(ngModel)]="id" /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password" type="password" /> </mat-form-field
+  ><br />
+  <button mat-raised-button color="accent" (click)="login()">Login</button>
+</mat-card>
